@@ -1,3 +1,2 @@
-// Package gowebdav is a WebDAV client library with a command line tool
-// included.
+// Package gowebdav is a WebDAV client library.
 package gowebdav
