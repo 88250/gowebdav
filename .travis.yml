@@ -4,7 +4,7 @@ go:
   - "1.12.x"
 
 install:
-  - go get ./...
+  - go get
 
 script:
-  - go test -v --short ./...
+  - go test -v
