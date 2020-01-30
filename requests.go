@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"net/url"
 	"path"
 	"strings"
 )
@@ -117,14 +116,7 @@ func (c *Client) propfind(path string, self bool, body string, resp interface{},
 
 func (c *Client) doCopyMove(method string, oldpath string, newpath string, overwrite bool) (int, io.ReadCloser) {
 	rs, err := c.req(method, oldpath, nil, func(rq *http.Request) {
-		parts := strings.Split(newpath, "/")
-		newpath = ""
-		for i, part := range parts {
-			newpath += url.PathEscape(part)
-			if i < len(parts)-1 {
-				newpath += "/"
-			}
-		}
+		newpath = PathEscape(newpath)
 		rq.Header.Add("Destination", Join(c.root, newpath))
 		if overwrite {
 			rq.Header.Add("Overwrite", "T")
