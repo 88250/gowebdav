@@ -154,7 +154,7 @@ func (c *Client) ReadDir(path string) ([]os.FileInfo, error) {
 				f.isdir = false
 			}
 
-			files = append(files, *f)
+			files = append(files, f)
 		}
 
 		r.Props = nil
