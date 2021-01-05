@@ -17,56 +17,56 @@ type File struct {
 	isdir       bool
 }
 
-func (f File) SetPath(path string) {
+func (f *File) SetPath(path string) {
 	f.path = path
 }
 
-func (f File) SetName(name string) {
+func (f *File) SetName(name string) {
 	f.name = name
 }
 
-func (f File) SetContentType(contentType string) {
+func (f *File) SetContentType(contentType string) {
 	f.contentType = contentType
 }
 
-func (f File) SetSize(size int64) {
+func (f *File) SetSize(size int64) {
 	f.size = size
 }
 
-func (f File) SetModified(modified time.Time) {
+func (f *File) SetModified(modified time.Time) {
 	f.modified = modified
 }
 
-func (f File) SetEtag(etag string) {
+func (f *File) SetEtag(etag string) {
 	f.etag = etag
 }
 
-func (f File) SetIsDir(isDir bool) {
+func (f *File) SetIsDir(isDir bool) {
 	f.isdir = isDir
 }
 
 // Path returns the path of a file
-func (f File) Path() string {
+func (f *File) Path() string {
 	return f.path
 }
 
 // Name returns the name of a file
-func (f File) Name() string {
+func (f *File) Name() string {
 	return f.name
 }
 
 // ContentType returns the content type of a file
-func (f File) ContentType() string {
+func (f *File) ContentType() string {
 	return f.contentType
 }
 
 // Size returns the size of a file
-func (f File) Size() int64 {
+func (f *File) Size() int64 {
 	return f.size
 }
 
 // Mode will return the mode of a given file
-func (f File) Mode() os.FileMode {
+func (f *File) Mode() os.FileMode {
 	// TODO check webdav perms
 	if f.isdir {
 		return 0775 | os.ModeDir
@@ -76,27 +76,27 @@ func (f File) Mode() os.FileMode {
 }
 
 // ModTime returns the modified time of a file
-func (f File) ModTime() time.Time {
+func (f *File) ModTime() time.Time {
 	return f.modified
 }
 
 // ETag returns the ETag of a file
-func (f File) ETag() string {
+func (f *File) ETag() string {
 	return f.etag
 }
 
 // IsDir let us see if a given file is a directory or not
-func (f File) IsDir() bool {
+func (f *File) IsDir() bool {
 	return f.isdir
 }
 
 // Sys ????
-func (f File) Sys() interface{} {
+func (f *File) Sys() interface{} {
 	return nil
 }
 
 // String lets us see file information
-func (f File) String() string {
+func (f *File) String() string {
 	if f.isdir {
 		return fmt.Sprintf("Dir : '%s' - '%s'", f.path, f.name)
 	}
