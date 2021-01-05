@@ -17,6 +17,34 @@ type File struct {
 	isdir       bool
 }
 
+func (f File) SetPath(path string) {
+	f.path = path
+}
+
+func (f File) SetName(name string) {
+	f.name = name
+}
+
+func (f File) SetContentType(contentType string) {
+	f.contentType = contentType
+}
+
+func (f File) SetSize(size int64) {
+	f.size = size
+}
+
+func (f File) SetModified(modified time.Time) {
+	f.modified = modified
+}
+
+func (f File) SetEtag(etag string) {
+	f.etag = etag
+}
+
+func (f File) SetIsDir(isDir bool) {
+	f.isdir = isDir
+}
+
 // Path returns the path of a file
 func (f File) Path() string {
 	return f.path
